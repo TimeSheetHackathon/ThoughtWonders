@@ -1,5 +1,8 @@
 package com.thoughtworks.timesheet.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -7,15 +10,20 @@ import java.util.ArrayList;
  */
 public class GoFigureThoughtworker {
     private String role;
+    @SerializedName("home-office")
     private String homeOffice;
+    @SerializedName("project-name")
     private String projectName;
     private String name;
+    @SerializedName("account-name")
     private String accountName;
     private String grade;
     private String id;
     private String weekend;
     private String country;
+    @SerializedName("staffing-office")
     private String staffingOffice;
+    @SerializedName("working-office")
     private String workingOffice;
 
     public GoFigureThoughtworker() {

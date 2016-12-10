@@ -13,23 +13,18 @@ import java.util.List;
  */
 public class GoFigureMissingTimesheetTransformer {
 
-  public static ThoughtWorkerMissingTimesheetMappingsHolder transformGoFigures(List<GoFigureThoughtworker> goFigures)
-  {
-    HashMap<String,List<MissedTimesheet>> timesheetMappings=new HashMap<String, List<MissedTimesheet>>();
-    for(GoFigureThoughtworker thoughtworker:goFigures)
-    {
-      if(timesheetMappings.containsKey(thoughtworker.getId()))
-      {
-        timesheetMappings.get(thoughtworker.getId()).add(MissedTimesheetTransformer.getMissedTimesheet(thoughtworker));
-      }
-      else
-      {
-        List<MissedTimesheet> missedTimesheets=new ArrayList<MissedTimesheet>();
-        missedTimesheets.add(MissedTimesheetTransformer.getMissedTimesheet(thoughtworker));
-        timesheetMappings.put(thoughtworker.getId(),missedTimesheets);
-      }
+    public static ThoughtWorkerMissingTimesheetMappingsHolder transformGoFigures(List<GoFigureThoughtworker> goFigures) {
+        HashMap<String, List<MissedTimesheet>> timesheetMappings = new HashMap<String, List<MissedTimesheet>>();
+        for (GoFigureThoughtworker thoughtworker : goFigures) {
+            if (timesheetMappings.containsKey(thoughtworker.getId())) {
+                timesheetMappings.get(thoughtworker.getId()).add(MissedTimesheetTransformer.getMissedTimesheet(thoughtworker));
+            } else {
+                List<MissedTimesheet> missedTimesheets = new ArrayList<MissedTimesheet>();
+                missedTimesheets.add(MissedTimesheetTransformer.getMissedTimesheet(thoughtworker));
+                timesheetMappings.put(thoughtworker.getId(), missedTimesheets);
+            }
+        }
+        return new ThoughtWorkerMissingTimesheetMappingsHolder(timesheetMappings);
     }
-    return new ThoughtWorkerMissingTimesheetMappingsHolder(timesheetMappings);
-  }
 
 }

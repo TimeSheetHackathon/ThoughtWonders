@@ -30,8 +30,4 @@ public class ThoughtWorkerMissingTimesheetMappingsHolder {
   {
     return timesheetMapper.keySet();
   }
-  public Collection<List<MissedTimesheet>> getAllMissedTimesheets()
-  {
-    return timesheetMapper.values();
-  }
 }
