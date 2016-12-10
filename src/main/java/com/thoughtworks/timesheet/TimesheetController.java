@@ -22,14 +22,14 @@ import java.util.List;
 @Controller
 public class TimesheetController {
 
-    @RequestMapping(value = "/timesheets/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/timesheets/{id}", method = RequestMethod.GET, produces = "application/json")
     public @ResponseBody String getAllTimesheetsForPerson(@PathVariable String id) {
         List<GoFigureThoughtworker> all = new MissingTimecardReader().getAll();
         ThoughtWorkerMissingTimesheetMappingsHolder timesheetMappingsHolder = GoFigureMissingTimesheetTransformer.transformGoFigures(all);
         return new Gson().toJson(timesheetMappingsHolder.getTimesheet(id));
     }
 
-    @RequestMapping(value = "/timesheets/top/{10}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/timesheets/top/{limit}", method = RequestMethod.GET, produces = "application/json")
     public
     @ResponseBody
     String getAllTimesheetsForPerson(@PathVariable(value = "limit") int limit) {
