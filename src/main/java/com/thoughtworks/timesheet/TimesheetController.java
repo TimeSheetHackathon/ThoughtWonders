@@ -1,6 +1,8 @@
 package com.thoughtworks.timesheet;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParser;
+import com.thoughtworks.timesheet.Json.JsonReader;
 import com.thoughtworks.timesheet.Json.MissingTimecardReader;
 import com.thoughtworks.timesheet.domain.GoFigureThoughtworker;
 import com.thoughtworks.timesheet.domain.TimesheetMissedMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -30,9 +33,7 @@ public class TimesheetController {
     }
 
     @RequestMapping(value = "/timesheets/top/{limit}", method = RequestMethod.GET, produces = "application/json")
-    public
-    @ResponseBody
-    String getAllTimesheetsForPerson(@PathVariable(value = "limit") int limit) {
+    public @ResponseBody String getAllTimesheetsForPerson(@PathVariable(value = "limit") int limit) {
         List<GoFigureThoughtworker> all = new MissingTimecardReader().getAll();
         ThoughtWorkerMissingTimesheetMappingsHolder timesheetMappingsHolder = GoFigureMissingTimesheetTransformer.transformGoFigures(all);
         MissedTImesheetSortedSet set= SortedMissedTimeSheetTransformer.transformSortedTimeSheets(timesheetMappingsHolder.getTimesheetMapper());
@@ -45,5 +46,15 @@ public class TimesheetController {
             count++;
         }
         return new Gson().toJson(topTimesheetMappings);
+    }
+
+    @RequestMapping(value = "/person/{id}", method = RequestMethod.GET, produces = "application/json")
+    public @ResponseBody String getPersonDetails(@PathVariable(value = "id") String id){
+        try {
+            return JsonReader.readFromUrl("http://10.132.22.18:3000/people/" + id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
