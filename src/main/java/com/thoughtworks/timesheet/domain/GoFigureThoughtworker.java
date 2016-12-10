@@ -22,6 +22,20 @@ public class GoFigureThoughtworker {
 
     }
 
+    public GoFigureThoughtworker(String role, String homeOffice, String projectName, String name, String accountName, String grade, String id, String weekend, String country, String staffingOffice, String workingOffice) {
+        this.role = role;
+        this.homeOffice = homeOffice;
+        this.projectName = projectName;
+        this.name = name;
+        this.accountName = accountName;
+        this.grade = grade;
+        this.id = id;
+        this.weekend = weekend;
+        this.country = country;
+        this.staffingOffice = staffingOffice;
+        this.workingOffice = workingOffice;
+    }
+
     public String getRole() {
         return role;
     }
