@@ -1,5 +1,7 @@
 package com.thoughtworks.timesheet.domain;
 
+import java.util.ArrayList;
+
 /**
  * Created by mritunjd on 10/12/16.
  */
@@ -17,6 +19,7 @@ public class GoFigureThoughtworker {
     private String workingOffice;
 
     public GoFigureThoughtworker() {
+
     }
 
     public String getRole() {
