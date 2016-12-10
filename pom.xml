@@ -25,7 +25,7 @@
         <name>your custom repo</name>
         <url>http://central.maven.org/maven2</url>
     </repository>
-
+</repositories>
 
     <dependencies>
         <dependency>
