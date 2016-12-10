@@ -9,18 +9,27 @@ public class MissedTimesheet
   private String weekend;
   private String country;
   private String workingOffice;
+  private String employeeName;
 
   public MissedTimesheet() {
   }
 
 
-  public MissedTimesheet(String accountName, String weekend, String country, String workingOffice) {
+  public MissedTimesheet(String accountName, String weekend, String country, String workingOffice, String employeeName) {
     this.accountName = accountName;
     this.weekend = weekend;
     this.country = country;
     this.workingOffice = workingOffice;
+    this.employeeName = employeeName;
   }
 
+  public String getEmployeeName() {
+    return employeeName;
+  }
+
+  public void setEmployeeName(String employeeName) {
+    this.employeeName = employeeName;
+  }
 
   public String getWorkingOffice() {
     return workingOffice;

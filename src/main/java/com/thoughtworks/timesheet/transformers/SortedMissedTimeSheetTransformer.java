@@ -18,7 +18,7 @@ public class SortedMissedTimeSheetTransformer {
     TreeSet<TimesheetMissedMapping> set =new TreeSet<TimesheetMissedMapping>();
     for(Map.Entry<String,List<MissedTimesheet>> entry:timesheetMapper.entrySet())
     {
-      set.add(new TimesheetMissedMapping(entry.getKey(),entry.getValue(),entry.getValue().size()));
+      set.add(new TimesheetMissedMapping(entry.getKey(),entry.getValue(),entry.getValue().size(),entry.getValue().get(0).getEmployeeName()));
     }
     return new MissedTImesheetSortedSet(set);
   }

@@ -10,7 +10,7 @@ public class MissedTimesheetTransformer {
 
   public static MissedTimesheet getMissedTimesheet(GoFigureThoughtworker thoughtworker)
   {
-    MissedTimesheet timesheet=new MissedTimesheet(thoughtworker.getAccountName(),thoughtworker.getWeekend(),thoughtworker.getCountry(),thoughtworker.getWorkingOffice());
+    MissedTimesheet timesheet=new MissedTimesheet(thoughtworker.getAccountName(),thoughtworker.getWeekend(),thoughtworker.getCountry(),thoughtworker.getWorkingOffice(),thoughtworker.getName());
     return timesheet;
   }
 

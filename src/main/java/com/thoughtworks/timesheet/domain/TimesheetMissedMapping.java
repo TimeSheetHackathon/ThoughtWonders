@@ -7,13 +7,15 @@ import java.util.List;
  */
 public class TimesheetMissedMapping implements Comparable<TimesheetMissedMapping>{
   String employeeId;
+  String name;
   List<MissedTimesheet> missedTimesheets;
   int noOfTimesheetsMissed;
 
-  public TimesheetMissedMapping(String employeeId, List<MissedTimesheet> missedTimesheets, int noOfTimesheetsMissed) {
+  public TimesheetMissedMapping(String employeeId, List<MissedTimesheet> missedTimesheets, int noOfTimesheetsMissed,String name) {
     this.employeeId = employeeId;
+    this.name = name;
     this.missedTimesheets = missedTimesheets;
-    this.noOfTimesheetsMissed = noOfTimesheetsMissed;
+        this.noOfTimesheetsMissed = noOfTimesheetsMissed;
   }
 
   @Override
@@ -35,6 +37,14 @@ public class TimesheetMissedMapping implements Comparable<TimesheetMissedMapping
     result = 31 * result + missedTimesheets.hashCode();
     result = 31 * result + noOfTimesheetsMissed;
     return result;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
   public String getEmployeeId() {
@@ -60,6 +70,7 @@ public class TimesheetMissedMapping implements Comparable<TimesheetMissedMapping
   public void setNoOfTimesheetsMissed(int noOfTimesheetsMissed) {
     this.noOfTimesheetsMissed = noOfTimesheetsMissed;
   }
+
 
   public int compareTo(TimesheetMissedMapping o) {
     return o.getNoOfTimesheetsMissed()-this.getNoOfTimesheetsMissed();

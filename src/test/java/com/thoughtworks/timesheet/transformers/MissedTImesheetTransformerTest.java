@@ -27,6 +27,8 @@ public class MissedTImesheetTransformerTest {
     MissedTImesheetSortedSet set=SortedMissedTimeSheetTransformer.transformSortedTimeSheets(holder.getTimesheetMapper());
     Assert.assertTrue(set.getSortedTimesheets().size()==2);
     Assert.assertTrue(set.getSortedTimesheets().first().getEmployeeId().equalsIgnoreCase("19242"));
+    Assert.assertTrue(set.getSortedTimesheets().first().getName().equalsIgnoreCase("dhruv"));
+
 
 
   }
